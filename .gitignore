@@ -1,0 +1,41 @@
+# Compiled Object files
+*.o
+*.a
+*.so
+
+# Executable
+cub3D
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Log files
+*.log
+
+# Backup files
+*.bak
+*.backup
+
