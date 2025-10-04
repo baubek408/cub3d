@@ -25,16 +25,6 @@ Cub3D is a first-person 3D maze exploration game. The rendering engine is built 
 - **Window Management**: Smooth window management using MiniLibX, including graceful exit.
 - **Error Handling**: Robust parsing and handling of invalid map files or missing assets.
 
-### Bonus Part
-- [ ] Minimap display on the screen.
-- [ ] Wall collision detection.
-- [ ] Sprite rendering (e.g., pillars, items).
-- [ ] Floor and ceiling textures.
-- [ ] Mouse look (camera rotation with the mouse).
-- [ ] Doors that can open and close.
-- [ ] Animated sprites.
-- [ ] Sound effects or background music.
-
 ## Technologies Used
 
 * **Language**: C
