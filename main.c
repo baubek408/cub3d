@@ -6,7 +6,7 @@
 /*   By: bmynbyae@student.42prague.com <bmynbyae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 21:45:29 by bmynbyae@st       #+#    #+#             */
-/*   Updated: 2025/09/21 22:58:18 by bmynbyae@st      ###   ########.fr       */
+/*   Updated: 2025/10/08 20:32:40 by bmynbyae@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	main(int argc, char **argv)
 	}
 	init_game(&game);
 	parse_file(argv[1], &game);
+	load_textures(&game);
 	game.win = mlx_new_window(game.mlx, WIDTH, HEIGHT, "Cub3D");
 	if (!game.win)
 		exit_error(&game, "Failed to create MLX window.");

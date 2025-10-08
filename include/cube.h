@@ -182,6 +182,7 @@ void			parse_map(t_list *map_list, t_game *game);
 void			validate_map(t_game *game);
 void			process_line(char *line, t_game *game,
 						t_list **map_list, bool *is_parsing_map);
+void			load_textures(t_game *game);
 
 // --- src/player ---
 void			move_player(t_game *game);

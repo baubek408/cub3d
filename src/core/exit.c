@@ -42,9 +42,19 @@ void	free_config(t_config *config)
 /* Frees all game resources and exits */
 void	free_game(t_game *game)
 {
+	int	i;
+
 	if (!game)
 		return ;
 	free_config(&game->config);
+	/* Free texture images */
+	i = 0;
+	while (i < 4)
+	{
+		if (game->textures[i].img)
+			mlx_destroy_image(game->mlx, game->textures[i].img);
+		i++;
+	}
 	if (game->img)
 		mlx_destroy_image(game->mlx, game->img);
 	if (game->win)

@@ -25,6 +25,7 @@ SRCS =	main.c \
 		$(PARSE_DIR)/parse_texture.c \
 		$(PARSE_DIR)/parse_color.c \
 		$(PARSE_DIR)/map_validator.c \
+		$(PARSE_DIR)/load_textures.c \
 		$(UTILS_DIR)/get_next_line.c \
 		$(UTILS_DIR)/ft_string.c \
 		$(UTILS_DIR)/ft_trimspl.c \

@@ -43,6 +43,11 @@ t_tex_info	prepare_texture_info(t_game *g, t_ray *ray)
 
 	tex_info.texture = get_wall_texture(g, ray->side, ray->angle);
 	tex_info.tex_x = (int)(ray->wall_x * (float)tex_info.texture->width);
+	/* Ensure texture coordinate is within bounds */
+	if (tex_info.tex_x >= tex_info.texture->width)
+		tex_info.tex_x = tex_info.texture->width - 1;
+	if (tex_info.tex_x < 0)
+		tex_info.tex_x = 0;
 	/* Flip texture if needed */
 	if ((ray->side == 0 && cosf(ray->angle) < 0)
 		|| (ray->side == 1 && sinf(ray->angle) > 0))
@@ -70,6 +75,11 @@ static void	draw_column(t_game *g, int x, t_wall_slice *slice, t_tex_info *info)
 		info->tex_pos = (y - (-slice->height / 2 + HEIGHT / 2))
 			/ (float)slice->height;
 		tex_y = (int)(info->tex_pos * info->texture->height);
+		/* Ensure texture Y coordinate is within bounds */
+		if (tex_y >= info->texture->height)
+			tex_y = info->texture->height - 1;
+		if (tex_y < 0)
+			tex_y = 0;
 		color = get_pixel_color(info->texture, info->tex_x, tex_y);
 		put_pixel(g, x, y, color);
 		y++;
