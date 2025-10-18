@@ -107,13 +107,13 @@ float	cast_ray_dda(t_game *g, float angle, int *out_side, float *wall_x)
 	perform_dda(g, &dda);
 	if (*(dda.side) == 0)
 	{
-		perp_wall_dist = (dda.side_dist_x - dda.delta_dist_x) * BLOCK;
-		*(dda.wall_x) = g->player.y + perp_wall_dist * dda.ray_dir_y / BLOCK;
+		perp_wall_dist = (dda.side_dist_x - dda.delta_dist_x);
+		*(dda.wall_x) = g->player.y / BLOCK + perp_wall_dist * dda.ray_dir_y;
 	}
 	else
 	{
-		perp_wall_dist = (dda.side_dist_y - dda.delta_dist_y) * BLOCK;
-		*(dda.wall_x) = g->player.x + perp_wall_dist * dda.ray_dir_x / BLOCK;
+		perp_wall_dist = (dda.side_dist_y - dda.delta_dist_y);
+		*(dda.wall_x) = g->player.x / BLOCK + perp_wall_dist * dda.ray_dir_x;
 	}
 	*(dda.wall_x) -= floorf(*(dda.wall_x));
 	return (perp_wall_dist);
