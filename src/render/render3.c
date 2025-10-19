@@ -6,7 +6,7 @@
 /*   By: bmynbyae@student.42prague.com <bmynbyae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:23:34 by bmynbyae@st       #+#    #+#             */
-/*   Updated: 2025/10/19 00:50:21 by bmynbyae@st      ###   ########.fr       */
+/*   Updated: 2025/10/19 02:37:36 by bmynbyae@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ static void	init_dda_vars(t_game *g, t_dda *dda, float angle)
 float	cast_ray_dda(t_game *g, float angle, int *out_side, float *wall_x)
 {
 	t_dda	dda;
-	float	perp_wall_dist;
+	float	perp_wall_dist_map;
 
 	dda.side = out_side;
 	dda.wall_x = wall_x;
@@ -106,15 +106,13 @@ float	cast_ray_dda(t_game *g, float angle, int *out_side, float *wall_x)
 	calculate_step_and_side_dist(&g->player, &dda);
 	perform_dda(g, &dda);
 	if (*(dda.side) == 0)
-	{
-		perp_wall_dist = (dda.side_dist_x - dda.delta_dist_x) * BLOCK;
-		*(dda.wall_x) = g->player.y + perp_wall_dist * dda.ray_dir_y / BLOCK;
-	}
+		perp_wall_dist_map = (dda.side_dist_x - dda.delta_dist_x);
 	else
-	{
-		perp_wall_dist = (dda.side_dist_y - dda.delta_dist_y) * BLOCK;
-		*(dda.wall_x) = g->player.x + perp_wall_dist * dda.ray_dir_x / BLOCK;
-	}
+		perp_wall_dist_map = (dda.side_dist_y - dda.delta_dist_y);
+	if (*(dda.side) == 0)
+		*(dda.wall_x) = (g->player.y / BLOCK) + perp_wall_dist_map * dda.ray_dir_y;
+	else
+		*(dda.wall_x) = (g->player.x / BLOCK) + perp_wall_dist_map * dda.ray_dir_x;
 	*(dda.wall_x) -= floorf(*(dda.wall_x));
-	return (perp_wall_dist);
+	return (perp_wall_dist_map * BLOCK);
 }
